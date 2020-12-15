@@ -1,34 +1,7 @@
-![Logo](art/autosize_banner.jpg)
-![Official](https://raw.githubusercontent.com/JessYanCoding/MVPArms/master/image/official.jpeg)
 
-<p align="center">
-   <a href="https://bintray.com/jessyancoding/maven/autosize/_latestVersion">
-    <img src="https://img.shields.io/badge/Jcenter-v1.1.2-brightgreen.svg?style=flat-square" alt="Latest Stable Version" />
-  </a>
-  <a href="https://travis-ci.org/JessYanCoding/AndroidAutoSize">
-    <img src="https://travis-ci.org/JessYanCoding/AndroidAutoSize.svg?branch=master" alt="Build Status" />
-  </a>
-  <a href="https://developer.android.com/about/versions/android-4.0.html">
-    <img src="https://img.shields.io/badge/API-14%2B-blue.svg?style=flat-square" alt="Min Sdk Version" />
-  </a>
-  <a href="http://www.apache.org/licenses/LICENSE-2.0">
-    <img src="http://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square" alt="License" />
-  </a>
-  <a href="https://www.jianshu.com/u/1d0c0bc634db">
-    <img src="https://img.shields.io/badge/Author-JessYan-orange.svg?style=flat-square" alt="Author" />
-  </a>
-  <a href="https://shang.qq.com/wpa/qunwpa?idkey=7e59e59145e6c7c68932ace10f52790636451f01d1ecadb6a652b1df234df753">
-    <img src="https://img.shields.io/badge/QQ%E7%BE%A4-455850365%20%7C%20301733278-orange.svg?style=flat-square" alt="QQ Group" />
-  </a>
-</p>
 
-<p align="center">
-  <a href="README-zh.md">
-    <b>中文说明</b>
-  </a>
-</p>
+## 今日头条屏幕适配方案终极版，一个极低成本的 Android 屏幕适配方案.
 
-## A low-cost Android screen adaptation solution (今日头条屏幕适配方案终极版，一个极低成本的 Android 屏幕适配方案).
 
 ## Overview
 ### Pixel 2 XL | 1440 x 2880 | 560dpi:
@@ -67,17 +40,17 @@
 </p>
 
 ## Notice
-* [Devices Info](https://material.io/tools/devices/)
+* [主流机型设备信息，可以作为参考](https://material.io/tools/devices/)
 
-* [Introduction Of Function](https://juejin.im/post/5bce688e6fb9a05cf715d1c2)
+* [功能介绍](https://juejin.im/post/5bce688e6fb9a05cf715d1c2)
 
-* [Framework Analysis](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
+* [原理分析](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
 
-* [Common Issues](https://github.com/JessYanCoding/AndroidAutoSize/issues/13)
+* [今日头条屏幕适配方案常见问题汇总](https://github.com/JessYanCoding/AndroidAutoSize/issues/13)
 
-* [AndroidAutoLayout Migration Guide](https://github.com/JessYanCoding/AndroidAutoSize/issues/90)
+* [Android 进阶框架](https://github.com/JessYanCoding/MVPArms)
 
-* [Android Advanced Framework](https://github.com/JessYanCoding/MVPArms)
+* 对于老项目，如果使用了 **AndroidAutoLayout**，请参考 [**AndroidAutoLayout** 迁移指南](https://github.com/JessYanCoding/AndroidAutoSize/issues/90)，**AndroidAutoSize** 可以和 [**AndroidAutoLayout**](https://github.com/hongyangAndroid/AndroidAutoLayout) 一起使用，因为 **AndroidAutoLayout** 使用的是 **px**，所以 **AndroidAutoSize** 对它不会产生任何影响，如果老项目的某些页面之前使用了 **dp** 进行布局，并且 **AndroidAutoSize** 对这些页面已经产生了不良影响，可以让之前使用了 **dp** 的旧 **Activity** 实现 **CancelAdapt** 取消适配，**建议使用副单位，使用副单位则不会影响之前使用了 dp 的页面 (也不会影响三方库和系统控件)，详情请查看 [demo-subunits](https://github.com/JessYanCoding/AndroidAutoSize/tree/master/demo-subunits)** 
 
 ## Download
 ``` gradle
@@ -85,8 +58,8 @@
 ```
 
 ## Usage
-### Step 1 (just one steps) 
-* **Initialize in AndroidManifest, if you use a subunits, you can write the pixel size, no need to convert the pixel to dp, please see [demo-subunits](https://github.com/JessYanCoding/AndroidAutoSize/tree/master/demo-subunits)**
+### Step 1 (真的不吹牛逼，只需要以下这一步，框架就可以对项目中的所有页面进行适配)
+* **请在 AndroidManifest 中填写全局设计图尺寸 (单位 dp)，如果使用副单位，则可以直接填写像素尺寸，不需要再将像素转化为 dp，详情请查看 [demo-subunits](https://github.com/JessYanCoding/AndroidAutoSize/tree/master/demo-subunits)**
 ```xml
 <manifest>
     <application>            
@@ -102,34 +75,34 @@
 
 <a name="preview"></a>
 ## Preview
-* Real-time preview during layout is an important part of the development phase, in many cases, the default preview device provided by **Android Studio** does not fully display our design, so we need to create the virtual device ourselves, under the **dp, pt, in, mm** four units of virtual device creation method
+* 布局时的实时预览在开发阶段是一个很重要的环节，很多情况下 **Android Studio** 提供的默认预览设备并不能完全展示我们的设计图，所以我们就需要自己创建模拟设备，下面就介绍下 **dp、pt、in、mm** 这四种单位的模拟设备创建方法
 
-* If you don't want the status bar and navigation bar to appear in **Preview** during preview, you can select the **panel** theme according to the following image, after using this theme, the vertical resolution just fills the entire preview page
+* 如果您在预览时不希望在 **Preview** 中出现状态栏和导航栏, 则可以根据下图选择 **panel** 主题，使用该主题后纵向分辨率刚好填充整个预览页面，显示效果完全和设计图一致
 ![theme](art/theme_panel.png)
 
-* Virtual device creation method
+* 为了方便广大新手，所以还是将创建模拟设备的步骤贴出来，为大家操碎了心，如果觉得 **AndroidAutoSize** 不错，请一定记得 **star**，并将 **AndroidAutoSize** 推荐给您的伙伴们
 ![create step](art/create_step.png)
 
 ### DP
-* If you use **dp** as a unit in the **layout** file for layout (**AndroidAutoSize** supports **dp, sp** for layout by default), you can find the screen size according to the formula **(sqrt(vertical resolution^2 + horizontal resolution^2))/dpi** and create an virtual device (**write screen size and resolution only**)
+* 如果您在 **layout** 文件中使用 **dp** 作为单位进行布局 (**AndroidAutoSize** 默认支持 **dp、sp** 进行布局)，则可以根据公式 **(sqrt(纵向分辨率^2+横向分辨率^2))/dpi** 求出屏幕尺寸，然后创建模拟设备 (**只用填写屏幕尺寸和分辨率**)
 ![dp](art/unit_dp.png)
 
 ### PT
-* If you use **pt** as a unit in the **layout** file for layout (requires **AutoSizeConfig.getInstance().getUnitsManager().setSupportSubunits(Subunits.PT);** to open **pt** support), you can find the screen size according to the formula **(sqrt(vertical resolution^2 + horizontal resolution^2))/72** and create an virtual device (**write screen size and resolution only**)
+* 如果您在 **layout** 文件中使用 **pt** 作为单位进行布局 (需要通过 **AutoSizeConfig.getInstance().getUnitsManager().setSupportSubunits(Subunits.PT);** 打开对单位 **pt** 的支持)，则可以根据公式 **(sqrt(纵向分辨率^2+横向分辨率^2))/72** 求出屏幕尺寸，然后创建模拟设备 (**只用填写屏幕尺寸和分辨率**)
 ![pt](art/unit_pt.png)
 
 ### IN
-* If you use **in** as a unit in the **layout** file for layout (requires **AutoSizeConfig.getInstance().getUnitsManager().setSupportSubunits(Subunits.IN);** to open **in** support), you can find the screen size according to the formula **sqrt(vertical resolution^2 + horizontal resolution^2)** and create an virtual device (**write screen size and resolution only**)
+* 如果您在 **layout** 文件中使用 **in** 作为单位进行布局 (需要通过 **AutoSizeConfig.getInstance().getUnitsManager().setSupportSubunits(Subunits.IN);** 打开对单位 **in** 的支持)，则可以根据公式 **sqrt(纵向分辨率^2+横向分辨率^2)** 求出屏幕尺寸，然后创建模拟设备 (**只用填写屏幕尺寸和分辨率**)
 ![in](art/unit_in.png)
 
 ### MM
-* If you use **mm** as a unit in the **layout** file for layout (requires **AutoSizeConfig.getInstance().getUnitsManager().setSupportSubunits(Subunits.MM);** to open **mm** support), you can find the screen size according to the formula **(sqrt(vertical resolution^2 + horizontal resolution^2))/25.4** and create an virtual device (**write screen size and resolution only**)
+* 如果您在 **layout** 文件中使用 **mm** 作为单位进行布局 (需要通过 **AutoSizeConfig.getInstance().getUnitsManager().setSupportSubunits(Subunits.MM);** 打开对单位 **mm** 的支持)，则可以根据公式 **(sqrt(纵向分辨率^2+横向分辨率^2))/25.4** 求出屏幕尺寸，然后创建模拟设备 (**只用填写屏幕尺寸和分辨率**)
 ![mm](art/unit_mm.png)
 
-## Advance (see demo)
+## Advanced (以下用法看不懂？答应我，认真看 demo 好不好？)
 
 ### Activity
-* **Customize the adaptation parameters of the Activity:**
+* **当某个 Activity 的设计图尺寸与在 AndroidManifest 中填写的全局设计图尺寸不同时，可以实现 CustomAdapt 接口扩展适配参数**
 ```java
 public class CustomAdaptActivity extends AppCompatActivity implements CustomAdapt {
 
@@ -145,7 +118,7 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
 }
 ```
 
-* **Cancel the adaptation of the Activity:**
+* **当某个 Activity 想放弃适配，请实现 CancelAdapt 接口**
 ```java
 public class CancelAdaptActivity extends AppCompatActivity implements CancelAdapt {
 
@@ -153,12 +126,12 @@ public class CancelAdaptActivity extends AppCompatActivity implements CancelAdap
 ```
 
 ### Fragment
-* **First enable the ability to support Fragment custom parameters**
+* **首先开启支持 Fragment 自定义参数的功能**
 ```java
 AutoSizeConfig.getInstance().setCustomFragment(true);
 ```
 
-* **Customize the adaptation parameters of the Fragment:**
+* **当某个 Fragment 的设计图尺寸与在 AndroidManifest 中填写的全局设计图尺寸不同时，可以实现 CustomAdapt 接口扩展适配参数**
 ```java
 public class CustomAdaptFragment extends Fragment implements CustomAdapt {
 
@@ -174,15 +147,15 @@ public class CustomAdaptFragment extends Fragment implements CustomAdapt {
 }
 ```
 
-* **Cancel the adaptation of the Fragment:**
+* **当某个 Fragment 想放弃适配，请实现 CancelAdapt 接口**
 ```java
 public class CancelAdaptFragment extends Fragment implements CancelAdapt {
 
 }
 ```
 
-### Subunits (see demo-subunits)
-* You can choose one of the three unpopular units of **pt, in, mm** as the subunits, the subunits is used to avoid the adverse effects caused by modifying **DisplayMetrics#density**, after using the subunits, you can write the pixel size on the design, you don't need to convert it to **dp**
+### Subunits (请认真看 demo-subunits，里面有详细介绍)
+* 可以在 **pt、in、mm** 这三个冷门单位中，选择一个作为副单位，副单位是用于规避修改 **DisplayMetrics#density** 所造成的对于其他使用 **dp** 布局的系统控件或三方库控件的不良影响，使用副单位后可直接填写设计图上的像素尺寸，不需要再将像素转化为 **dp**
 
 
 ```java
